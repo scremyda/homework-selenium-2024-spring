@@ -25,9 +25,25 @@ class RegistrationPageLocators(BasePageLocators):
 
 class SettingsPageLocators(BasePageLocators):
     EXPECTED_ACCESS_URL = "https://ads.vk.com/hq/settings/access"
+    EXPECTED_ACCESS_DETAILS_URL = "https://ads.vk.com/help/articles/additionalaccounts"
 
     OPEN_SETTINGS = (
-        By.XPATH, "/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div[1]/div/div[1]/div/section[2]/a")
+        By.XPATH, "/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div[1]/div/div[1]/div/section[2]/a"
+    )
 
     OPEN_ACCESS_RIGHTS = (
-        By.XPATH, "/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[1]/div/div[3]")
+        By.XPATH, "/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[1]/div/div[3]"
+    )
+
+    OPEN_ACCESS_RIGHTS_DETAILS = (
+        By.XPATH, "/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[2]/section/div/div/div/div/div/div[2]/div/h4/div/span/a"
+    )
+
+    OPEN_ACCESS_RIGHTS_ADD_ACCOUNT = (
+        By.XPATH, "/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[2]/section/div/div/div/div/div/div[2]/div/div[2]/button/span"
+    )
+
+    WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT = (
+        By.XPATH,
+        "/html/body/div[1]/div/div[3]/div"
+    )

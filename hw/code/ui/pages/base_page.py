@@ -1,4 +1,4 @@
-import allure
+import time
 
 from selenium.webdriver.remote.webdriver import WebDriver as RemoteWebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -7,8 +7,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from ui.locators import basic_locators
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
 
-import time
 
 
 class PageNotOpenedExeption(Exception):
@@ -48,7 +49,6 @@ class BasePage(object):
         return self.wait(timeout).until(cond(locator))
 
 
-    @allure.step('Click')
     def click(self, locator, timeout: float | None = None) -> WebElement:
         elem = self.wait(timeout).until(EC.element_to_be_clickable(locator))
 
@@ -56,6 +56,11 @@ class BasePage(object):
 
         return elem
 
+    def wait_for_modal(self, locator, timeout=10):
+        try:
+            return self.find(locator, timeout)
+        except TimeoutException:
+            return None
 
     def clear(self, locator, timeout: float | None = None) -> WebElement:
         elem = self.find(locator, timeout)
@@ -68,14 +73,12 @@ class BasePage(object):
         return elem
 
 
-    @allure.step('Fill in')
     def fill_in(self, locator, query: str, timeout: float | None = None) -> WebElement:
         elem = self.clear(locator, timeout)
         elem.send_keys(query)
         return elem
 
 
-    @allure.step('Check if enabled')
     def is_enabled(self, locator, timeout=5) -> bool:
         elem = self.find(locator, timeout=timeout)
         return elem.is_enabled()
