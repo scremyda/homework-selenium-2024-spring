@@ -9,3 +9,4 @@ __pycache__
 mypy.ini
 notes.txt
 un.html
+.test_env
