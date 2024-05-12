@@ -75,3 +75,7 @@ class SettingsPageLocators(BasePageLocators):
         By.XPATH,
         "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/div[1]/div/form/div[1]/div[1]/div[1]/span[2]"
     )
+
+class CompaniesPageLocators(BasePageLocators):
+
+    CREATE_BUTTON = (By.XPATH, '//*[@data-testid="create-button"]')
