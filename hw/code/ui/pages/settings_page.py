@@ -18,8 +18,11 @@ class SettingsPage(BasePage):
     def open_access_rights_add_account(self):
         self.click(self.locators.OPEN_ACCESS_RIGHTS_ADD_ACCOUNT)
 
+    def close_access_rights_add_account(self):
+        self.click(self.locators.CLOSE_ACCESS_RIGHTS_ADD_ACCOUNT)
+
     def check_opened_modal_window(self):
-        self.wait_for_modal(self.locators.WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT)
+        return self.wait_for_modal(self.locators.WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT)
 
 
     def switch_to_opened_window(self):

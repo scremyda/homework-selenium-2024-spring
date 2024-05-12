@@ -43,6 +43,11 @@ class SettingsPageLocators(BasePageLocators):
         By.XPATH, "/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[2]/section/div/div/div/div/div/div[2]/div/div[2]/button/span"
     )
 
+    CLOSE_ACCESS_RIGHTS_ADD_ACCOUNT = (
+        By.XPATH,
+        "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[3]"
+    )
+
     WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT = (
         By.XPATH,
         "/html/body/div[1]/div/div[3]/div"

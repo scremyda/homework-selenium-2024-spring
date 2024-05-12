@@ -58,7 +58,10 @@ class BasePage(object):
 
     def wait_for_modal(self, locator, timeout=10):
         try:
-            return self.find(locator, timeout)
+            add_room_modal = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located(locator)
+            )
+            return add_room_modal
         except TimeoutException:
             return None
 
