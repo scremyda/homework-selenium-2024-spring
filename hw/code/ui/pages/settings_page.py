@@ -33,6 +33,18 @@ class SettingsPage(BasePage):
     def get_add_account_input(self, input_vk_id):
         return input_vk_id.get_attribute(self.locators.INPUT_ATTRIBUTE)
 
+    def get_add_account_save_error(self):
+        return self.find(self.locators.WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT_ID_ERROR)
+
+    def save_access_rights_add_account(self):
+        self.click(self.locators.WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT_ID_SAVE)
+
+    def open_common(self):
+        self.click(self.locators.OPEN_COMMON)
+
+    def open_access_rights_details(self):
+        self.click(self.locators.OPEN_ACCESS_RIGHTS_DETAILS)
+
     def switch_to_opened_window(self):
         window_handles = self.driver.window_handles
 

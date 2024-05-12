@@ -26,6 +26,7 @@ class RegistrationPageLocators(BasePageLocators):
 class SettingsPageLocators(BasePageLocators):
     EXPECTED_ACCESS_URL = "https://ads.vk.com/hq/settings/access"
     EXPECTED_ACCESS_DETAILS_URL = "https://ads.vk.com/help/articles/additionalaccounts"
+    EXPECTED_COMMON_URL = "https://ads.vk.com/hq/settings"
 
     INPUT_ADD_ACCOUNT_VK_ID = "test123456789"
     INPUT_ATTRIBUTE = "value"
@@ -36,6 +37,10 @@ class SettingsPageLocators(BasePageLocators):
 
     OPEN_ACCESS_RIGHTS = (
         By.XPATH, "/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[1]/div/div[3]"
+    )
+
+    OPEN_COMMON = (
+        By.XPATH, "/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div[2]/div/main/div[2]/div/div/div[1]/div/div[1]"
     )
 
     OPEN_ACCESS_RIGHTS_DETAILS = (
@@ -59,4 +64,14 @@ class SettingsPageLocators(BasePageLocators):
     WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT_ID = (
         By.XPATH,
         "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/div[1]/div/form/div[1]/div/div[1]/span/input"
+    )
+
+    WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT_ID_SAVE = (
+        By.XPATH,
+        "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/div[1]/div/form/div[2]/div/button[2]/span/span"
+    )
+
+    WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT_ID_ERROR = (
+        By.XPATH,
+        "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/div[1]/div/form/div[1]/div[1]/div[1]/span[2]"
     )
