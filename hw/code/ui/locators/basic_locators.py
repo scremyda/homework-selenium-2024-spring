@@ -24,8 +24,14 @@ class RegistrationPageLocators(BasePageLocators):
 class SettingsPageLocators(BasePageLocators):
     EXPECTED_ACCESS_URL = "https://ads.vk.com/hq/settings/access"
     EXPECTED_ACCESS_DETAILS_URL = "https://ads.vk.com/help/articles/additionalaccounts"
+
     EXPECTED_COMMON_URL = "https://ads.vk.com/hq/settings"
     EXPECTED_COMMON_ABOUT_ACCESS_URL = "https://ads.vk.com/help/articles/help_api"
+
+    EXPECTED_NOTIFICATIONS_URL = "https://ads.vk.com/hq/settings/notifications"
+    EXPECTED_NOTIFICATIONS_CONNECT_TG_URL = "https://t.me/vkadssenderbot"
+
+    EXPECTED_CHANGED_HISTORY_URL = "https://ads.vk.com/hq/settings/logs"
 
     INPUT_ADD_ACCOUNT_VK_ID = "test123456789"
     INPUT_ATTRIBUTE = "value"
@@ -38,8 +44,24 @@ class SettingsPageLocators(BasePageLocators):
         By.XPATH, "//*[contains(@class, 'vkuiTabsItem__label') and text()='Права доступа']"
     )
 
+    OPEN_HISTORY_OF_CHANGES = (
+        By.XPATH, "//*[contains(@class, 'vkuiTabsItem__label') and text()='История изменений']"
+    )
+
+    OPEN_HISTORY_OF_CHANGES_FILTER = (
+        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Фильтр']"
+    )
+
     OPEN_COMMON = (
         By.XPATH, "//*[contains(@class, 'vkuiTabsItem__label') and text()='Общие']"
+    )
+
+    OPEN_NOTIFICATIONS = (
+        By.XPATH, "//*[contains(@class, 'vkuiTabsItem__label') and text()='Уведомления']"
+    )
+
+    OPEN_CONNECT_TG = (
+        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Подключить']"
     )
 
     OPEN_ACCESS_RIGHTS_DETAILS = (
@@ -82,6 +104,11 @@ class SettingsPageLocators(BasePageLocators):
     USER_LANGUAGE_LIST = (
         By.XPATH,
         "//*[contains(@class, 'vkuiCustomSelectInput__title') and text()='RU']"
+    )
+
+    HISTORY_FILTER = (
+        By.XPATH,
+        "//*[contains(@class, 'FilterBlock_layout__UVMxX')]"
     )
 
     OPEN_MORE_ABOUT_ACCESS = (

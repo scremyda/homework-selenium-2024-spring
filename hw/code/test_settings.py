@@ -98,7 +98,7 @@ class TestSettings(BaseCase):
         time.sleep(2)
         assert settings_page.get_user_language_list is not None
 
-    def test_common_redirect(self, settings_page: SettingsPage):
+    def test_common_redirect_help_api(self, settings_page: SettingsPage):
         time.sleep(2)
         settings_page.scroll_to_about_access()
 
@@ -109,3 +109,41 @@ class TestSettings(BaseCase):
         settings_page.switch_to_opened_window()
 
         assert self.driver.current_url == settings_page.locators.EXPECTED_COMMON_ABOUT_ACCESS_URL
+
+    def test_notifications_redirect(self, settings_page: SettingsPage):
+        time.sleep(2)
+        settings_page.open_access_rights()
+
+        time.sleep(2)
+        settings_page.open_notifications()
+
+        time.sleep(2)
+        assert self.driver.current_url == settings_page.locators.EXPECTED_NOTIFICATIONS_URL
+
+
+    def test_notifications_connect_tg_redirect(self, settings_page: SettingsPage):
+        time.sleep(2)
+        settings_page.open_notifications()
+
+        time.sleep(2)
+        settings_page.open_connect_tg()
+
+        time.sleep(2)
+        settings_page.switch_to_opened_window()
+
+        assert settings_page.locators.EXPECTED_NOTIFICATIONS_CONNECT_TG_URL in self.driver.current_url
+
+    def test_history_of_changes_redirect(self, settings_page: SettingsPage):
+        time.sleep(2)
+        settings_page.open_history_of_changes()
+
+        time.sleep(2)
+        assert self.driver.current_url == settings_page.locators.EXPECTED_CHANGED_HISTORY_URL
+
+    def test_history_of_changes_filter(self, settings_page: SettingsPage):
+        settings_page.open_history_of_changes()
+
+        settings_page.open_changed_history_filter()
+
+        time.sleep(2)
+        assert settings_page.get_history_of_changes_filter is not None

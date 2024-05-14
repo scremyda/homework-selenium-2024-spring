@@ -12,6 +12,12 @@ class SettingsPage(BasePage):
     def open_access_rights(self):
         self.click(self.locators.OPEN_ACCESS_RIGHTS)
 
+    def open_history_of_changes(self):
+        self.click(self.locators.OPEN_HISTORY_OF_CHANGES)
+
+    def open_changed_history_filter(self):
+        self.click(self.locators.OPEN_HISTORY_OF_CHANGES_FILTER)
+
     def open_access_rights_details(self):
         self.click(self.locators.OPEN_ACCESS_RIGHTS_DETAILS)
 
@@ -42,6 +48,12 @@ class SettingsPage(BasePage):
     def open_common(self):
         self.click(self.locators.OPEN_COMMON)
 
+    def open_notifications(self):
+        self.click(self.locators.OPEN_NOTIFICATIONS)
+
+    def open_connect_tg(self):
+        self.click(self.locators.OPEN_CONNECT_TG)
+
     def open_user_language_list(self):
         self.click(self.locators.OPEN_USER_LANGUAGE_LIST)
 
@@ -53,6 +65,9 @@ class SettingsPage(BasePage):
 
     def get_user_language_list(self):
         return self.find(self.locators.USER_LANGUAGE_LIST)
+
+    def get_history_of_changes_filter(self):
+        return self.find(self.locators.HISTORY_FILTER)
 
     def switch_to_opened_window(self):
         window_handles = self.driver.window_handles
