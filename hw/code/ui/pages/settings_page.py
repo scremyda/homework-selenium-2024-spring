@@ -42,8 +42,17 @@ class SettingsPage(BasePage):
     def open_common(self):
         self.click(self.locators.OPEN_COMMON)
 
-    def open_access_rights_details(self):
-        self.click(self.locators.OPEN_ACCESS_RIGHTS_DETAILS)
+    def open_user_language_list(self):
+        self.click(self.locators.OPEN_USER_LANGUAGE_LIST)
+
+    def open_more_about_access(self):
+        self.click(self.locators.OPEN_MORE_ABOUT_ACCESS)
+
+    def scroll_to_about_access(self):
+        self.scroll_to_element(self.locators.OPEN_MORE_ABOUT_ACCESS)
+
+    def get_user_language_list(self):
+        return self.find(self.locators.USER_LANGUAGE_LIST)
 
     def switch_to_opened_window(self):
         window_handles = self.driver.window_handles

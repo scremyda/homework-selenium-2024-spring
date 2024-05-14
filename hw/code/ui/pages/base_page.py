@@ -8,7 +8,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from ui.locators import basic_locators
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
 
 
 
@@ -85,4 +84,8 @@ class BasePage(object):
     def is_enabled(self, locator, timeout=5) -> bool:
         elem = self.find(locator, timeout=timeout)
         return elem.is_enabled()
+
+    def scroll_to_element(self, element_locator):
+        element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(element_locator))
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
