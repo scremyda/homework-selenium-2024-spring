@@ -88,3 +88,7 @@ class SettingsPageLocators(BasePageLocators):
         By.XPATH,
         "//*[contains(@class, 'vkuiTappable') and text()='Подробнее о доступе']"
     )
+
+class CompaniesPageLocators(BasePageLocators):
+
+    CREATE_BUTTON = (By.XPATH, '//*[@data-testid="create-button"]')
