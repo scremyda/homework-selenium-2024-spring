@@ -16,16 +16,8 @@ def config(request):
     url = request.config.getoption('--url')
     debug_log = request.config.getoption('--debug_log')
     create_account = request.config.getoption('--create_account')
-
-    if request.config.getoption('--selenoid'):
-        if request.config.getoption('--vnc'):
-            vnc = True
-        else:
-            vnc = False
-        selenoid = 'http://127.0.0.1:4444/wd/hub'
-    else:
-        selenoid = None
-        vnc = False
+    selenoid = None
+    vnc = False
 
     return {
         'browser': browser,
