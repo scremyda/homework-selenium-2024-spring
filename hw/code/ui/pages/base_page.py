@@ -39,23 +39,21 @@ class BasePage(object):
         except:
             pass
 
-    def wait(self, timeout: float | None = None):
-        if timeout is None:
-            timeout = 5
+    def wait(self, timeout: float | None = 10):
         return WebDriverWait(self.driver, timeout=timeout)
 
-    def find(self, locator, timeout: float | None = None, cond=EC.visibility_of_element_located) -> WebElement:
+    def find(self, locator, timeout: float | None = 10, cond=EC.visibility_of_element_located) -> WebElement:
         return self.wait(timeout).until(cond(locator))
 
 
-    def click(self, locator, timeout: float | None = None) -> WebElement:
+    def click(self, locator, timeout: float | None = 10) -> WebElement:
         elem = self.wait(timeout).until(EC.element_to_be_clickable(locator))
 
         elem.click()
 
         return elem
 
-    def wait_for_modal(self, locator, timeout=10):
+    def wait_for_modal(self, locator, timeout: float | None = 10):
         try:
             add_room_modal = WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_element_located(locator)
@@ -64,7 +62,7 @@ class BasePage(object):
         except TimeoutException:
             return None
 
-    def clear(self, locator, timeout: float | None = None) -> WebElement:
+    def clear(self, locator, timeout: float | None = 10) -> WebElement:
         elem = self.find(locator, timeout)
         elem.clear()
 
@@ -75,17 +73,17 @@ class BasePage(object):
         return elem
 
 
-    def fill_in(self, locator, query: str, timeout: float | None = None) -> WebElement:
+    def fill_in(self, locator, query: str, timeout: float | None = 10) -> WebElement:
         elem = self.clear(locator, timeout)
         elem.send_keys(query)
         return elem
 
 
-    def is_enabled(self, locator, timeout=5) -> bool:
+    def is_enabled(self, locator, timeout=10) -> bool:
         elem = self.find(locator, timeout=timeout)
         return elem.is_enabled()
 
-    def scroll_to_element(self, element_locator):
-        element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(element_locator))
+    def scroll_to_element(self, element_locator, timeout: float | None = 10):
+        element = WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(element_locator))
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 

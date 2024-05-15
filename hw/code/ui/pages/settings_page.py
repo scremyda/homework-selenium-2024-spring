@@ -1,3 +1,5 @@
+import time
+from selenium.common.exceptions import TimeoutException
 from ui.locators import basic_locators
 from ui.pages.base_page import BasePage
 
@@ -69,8 +71,14 @@ class SettingsPage(BasePage):
     def get_history_of_changes_filter(self):
         return self.find(self.locators.HISTORY_FILTER)
 
-    def switch_to_opened_window(self):
+    def switch_to_opened_window(self, timeout = 10):
         window_handles = self.driver.window_handles
+
+        start_time = time.time()
+        while len(window_handles) == 1:
+            if time.time() - start_time > timeout:
+                raise TimeoutException
+            window_handles = self.driver.window_handles
 
         new_window_handle = window_handles[-1]
         self.driver.switch_to.window(new_window_handle)

@@ -79,7 +79,7 @@ class SettingsPageLocators(BasePageLocators):
 
     WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT = (
         By.XPATH,
-        "//*[contains(@class, 'vkuiTypography') and text()='Добавление кабинета']"
+        "//*[contains(@class, 'vkuiModalPage') ]"
     )
 
     WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT_ID = (
