@@ -118,7 +118,15 @@ class SettingsPageLocators(BasePageLocators):
 
 class CompaniesPageLocators(BasePageLocators):
 
-    CREATE_BUTTON = (By.XPATH, '//*[@data-testid="create-button"]')
+    SKIP_HELP_BUTTON = (
+        By.XPATH,
+        "//*[contains(@class, 'vkuiButton__content') and text()='Попробовать позже']"
+    )
+
+    CREATE_BUTTON = (
+        By.XPATH,
+         '//*[@data-testid="create-button"]'
+    )
 
     PLANS_BUTTON = (By.XPATH, "//*[contains(@id, 'dashboard') and contains(@id, '.plans')")
 

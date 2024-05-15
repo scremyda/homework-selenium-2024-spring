@@ -10,6 +10,12 @@ class CompaniesPage(BasePage):
     CORRECT_BUDGET = 1000
     TARGET_SITE = "ads.vk.com"
 
+    def skip_help(self):
+        try:
+            self.click(self.locators.SKIP_HELP_BUTTON)
+        except TimeoutException:
+            pass
+
     def click_create_btn(self):
         self.find(self.locators.CREATE_BUTTON).click()
 
