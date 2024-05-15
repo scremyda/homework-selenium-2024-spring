@@ -6,28 +6,23 @@ class TestCompanies(BaseCase):
     def test_redirect_create_page(self, companies_page):
         companies_page.click_create_btn()
 
-        time.sleep(2)
         assert self.is_url_open('https://ads.vk.com/hq/new_create/ad_plan')
 
 
     def test_redirect_groups_table(self, companies_page):
             companies_page.click_groups_btn()
 
-            time.sleep(2)
             assert self.is_url_open('https://ads.vk.com/hq/dashboard/ad_groups')
 
     def test_redirect_plans_table(self, companies_page):
             companies_page.click_ads_btn()
 
-            time.sleep(2)
             assert self.is_url_open('https://ads.vk.com/hq/dashboard/ads')
 
     def test_redirect_plans_table(self, companies_page):
         companies_page.click_ads_btn()
-
         companies_page.click_plans_btn()
 
-        time.sleep(2)
         assert self.is_url_open('https://ads.vk.com/hq/dashboard/ad_plans')
 
     def test_form_site_is_open(self, companies_page):
