@@ -34,15 +34,13 @@ class CompaniesPage(BasePage):
 
     def input_site_value(self, url):
         input = self.find(self.locators.SITE_INPUT)
-        input.click()
+        input.clear()
         input.send_keys(url)
-        input.send_keys(Keys.RETURN)
 
     def input_budget_value(self, budget_value):
         input = self.find(self.locators.BUDGET_INPUT)
-        input.click()
+        input.clear()
         input.send_keys(budget_value)
-        input.send_keys(Keys.RETURN)
 
     def click_contitnue_btn(self):
         self.click(self.locators.CONTINUE_BUTTON)
@@ -77,5 +75,5 @@ class CompaniesPage(BasePage):
 
     def input_search_query(self, query):
         input = self.find(self.locators.SEARCH_FIELD)
-        input.click()
+        input.clear()
         input.send_keys(query)
