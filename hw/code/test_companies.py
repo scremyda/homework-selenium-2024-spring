@@ -21,7 +21,7 @@ class TestCompanies(BaseCase):
 
             assert self.is_url_open('https://ads.vk.com/hq/dashboard/ads')
 
-    def test_redirect_plans_table(self, companies_page):#
+    def test_redirect_ads_table(self, companies_page):#
         companies_page.skip_help()    
         
         companies_page.click_ads_btn()
