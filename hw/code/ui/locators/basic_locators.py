@@ -128,29 +128,65 @@ class CompaniesPageLocators(BasePageLocators):
          '//*[@data-testid="create-button"]'
     )
 
-    PLANS_BUTTON = (By.XPATH, "//*[contains(@id, 'dashboard') and contains(@id, '.plans')")
+    PLANS_BUTTON = (
+        By.XPATH,
+         "//*[starts-with(@id, 'dashboard') and contains(@id, '.plans')]"
+    )
 
-    GROUPS_BUTTON = (By.XPATH, "//*[contains(@id, 'dashboard') and contains(@id, '.groups')")
+    GROUPS_BUTTON = (
+        By.XPATH, 
+        "//*[starts-with(@id, 'dashboard') and contains(@id, '.groups')]"
+    )
 
-    ADS_BUTTON = (By.XPATH, "//*[contains(@id, 'dashboard') and contains(@id, '.ads')")
+    ADS_BUTTON = (
+        By.XPATH, 
+        "//*[starts-with(@id, 'dashboard') and contains(@id, '.ads')]"
+    )
 
-    SITE_TARGET = (By.XPATH, "//*[@id='new_ad_create']/div/div/div/div/div/section[2]/div/section/div/div/div[1]")
+    SITE_TARGET = (
+        By.XPATH,
+        "//*[@data-id='site_conversions']"
+    )
 
-    SITE_INPUT = (By.XPATH, '//*[@id="new_ad_create"]/div/div/div/div/div/section[3]/form/div/div[1]/div/div/div/div/span and text()="Введите ссылку на сайт"')
+    SITE_INPUT = (
+        By.XPATH,
+        "//*[@placeholder='Введите ссылку на сайт']"
+    )
 
-    BUDGET_INPUT = (By.XPATH, '//*[@id="new_ad_create"]/div/div/div/div/div/section[3]/form/div[7]/div/span[1]/input')
+    BUDGET_INPUT = (
+        By.XPATH,
+        "//*[contains(@class, 'Budget_input__')]/input"
+    )
 
-    CONTINUE_BUTTON = (By.XPATH, '//*[@id="footer"]//button')
+    CONTINUE_BUTTON = (
+        By.XPATH,
+        "//*[@id='footer']//button"
+    )
     
-    MOBILEAPP_TARGET = (By.XPATH, "//*[@id='new_ad_create']/div/div/div/div/div/section[2]/div/section/div/div/div[3]")
+    MOBILEAPP_TARGET = (
+        By.XPATH,
+        "//*[@data-id='mobapps']"
+    )
 
-    TARGET_INPUT = (By.XPATH, '//*[@id="new_ad_create"]/div/div/div/div/div/section[3]/form/div/div/div[1]')
+    TARGET_INPUT = (
+        By.XPATH,
+        '//*[@id="new_ad_create"]/div/div/div/div/div/section[3]/form/div/div/div[1]'
+    )
 
-    MOBILE_TARGET_INPUT = (By.XPATH, '//*[@id="new_ad_create"]/div/div/div/div/div/section[3]/form/div/div[1]/div/div/div/div/span and text()="Выберите приложение"')
+    MOBILE_TARGET_INPUT = (
+        By.XPATH,
+        "//*[@placeholder='Выберите приложение']"
+    )
 
-    ROOT = (By.CLASS_NAME, 'header_logo__7lhb6')
+    ROOT = (
+        By.CLASS_NAME, 
+        'header_logo__7lhb6'
+    )
 
-    DROPDOWN_BUTTON = (By.XPATH, "//*[@id='adPlan']/div/div[2]/div/div[1]/div/div[1]/div")
+    DROPDOWN_BUTTON = (
+        By.XPATH, 
+        "//*[@id='adPlan']/div/div[2]/div/div[1]/div/div[1]/div"
+    )
 
     DRAFTS_BUTTON = (By.XPATH, '//*[@data-testid="drafts-button"]')
 
