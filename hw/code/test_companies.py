@@ -3,6 +3,7 @@ from ui.pages.companies_page import CompaniesPage
 
 class TestCompanies(BaseCase):
 
+
     def test_redirect_create_page(self, companies_page):#
         companies_page.skip_help()
         companies_page.click_create_btn()
@@ -10,18 +11,18 @@ class TestCompanies(BaseCase):
         assert self.is_url_open('https://ads.vk.com/hq/new_create/ad_plan')
 
     def test_redirect_groups_table(self, companies_page):
-            companies_page.skip_help()
-            companies_page.click_groups_btn()
+        companies_page.skip_help()
+        companies_page.click_groups_btn()
 
-            assert self.is_url_open('https://ads.vk.com/hq/dashboard/ad_groups')
+        assert self.is_url_open('https://ads.vk.com/hq/dashboard/ad_groups')
 
-    def test_redirect_plans_table(self, companies_page):
-            companies_page.skip_help()
-            companies_page.click_ads_btn()
+    def test_redirect_ads_table(self, companies_page):
+        companies_page.skip_help()
+        companies_page.click_ads_btn()
 
-            assert self.is_url_open('https://ads.vk.com/hq/dashboard/ads')
+        assert self.is_url_open('https://ads.vk.com/hq/dashboard/ads')
 
-    def test_redirect_ads_table(self, companies_page):#
+    def test_redirect_plans_table(self, companies_page):#
         companies_page.skip_help()    
         
         companies_page.click_ads_btn()

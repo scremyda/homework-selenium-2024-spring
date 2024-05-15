@@ -26,6 +26,7 @@ def driver(config):
         if vnc:
             capabilities['enableVNC'] = True
         options.default_capabilities = capabilities
+        options.add_argument('--ignore-certificate-errors-spki-list')
         driver = webdriver.Remote(
             'http://127.0.0.1:4444/wd/hub', options=options)
     elif browser == 'chrome':

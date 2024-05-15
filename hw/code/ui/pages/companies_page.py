@@ -13,23 +13,24 @@ class CompaniesPage(BasePage):
     def skip_help(self):
         try:
             self.click(self.locators.SKIP_HELP_BUTTON)
+            self.click(self.locators.SKIP_HELP_STEP)
         except TimeoutException:
             pass
 
     def click_create_btn(self):
-        self.find(self.locators.CREATE_BUTTON).click()
+        self.click(self.locators.CREATE_BUTTON, 20)
 
     def click_plans_btn(self):
-        self.find(self.locators.PLANS_BUTTON).click()
+        self.click(self.locators.PLANS_BUTTON)
 
     def click_groups_btn(self):
-        self.find(self.locators.GROUPS_BUTTON).click()
+        self.click(self.locators.GROUPS_BUTTON)
 
     def click_ads_btn(self):
-        self.find(self.locators.ADS_BUTTON).click()
+        self.click(self.locators.ADS_BUTTON)
 
     def select_site_target(self):
-        self.find(self.locators.SITE_TARGET).click()
+        self.click(self.locators.SITE_TARGET)
 
     def input_site_value(self, url):
         input = self.find(self.locators.SITE_INPUT)
@@ -44,7 +45,7 @@ class CompaniesPage(BasePage):
         input.send_keys(Keys.RETURN)
 
     def click_contitnue_btn(self):
-        self.find(self.locators.CONTINUE_BUTTON).click()
+        self.click(self.locators.CONTINUE_BUTTON)
 
     def create_company(self, url, budget):
         self.click_create_btn()
@@ -54,7 +55,7 @@ class CompaniesPage(BasePage):
         self.click_contitnue_btn()
 
     def select_mobileapp_target(self):
-        self.find(self.locators.MOBILEAPP_TARGET).click()
+        self.click(self.locators.MOBILEAPP_TARGET)
 
     def get_target_input(self):
         try:
@@ -69,10 +70,10 @@ class CompaniesPage(BasePage):
             return None
         
     def go_to_root(self):
-        self.find(self.locators.ROOT).click()
+        self.click(self.locators.ROOT)
 
     def click_drafts_btn(self):
-        self.find(self.locators.DRAFTS_BUTTON).click()
+        self.click(self.locators.DRAFTS_BUTTON)
 
     def input_search_query(self, query):
         input = self.find(self.locators.SEARCH_FIELD)

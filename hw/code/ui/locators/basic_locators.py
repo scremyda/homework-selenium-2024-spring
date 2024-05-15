@@ -123,6 +123,11 @@ class CompaniesPageLocators(BasePageLocators):
         "//*[contains(@class, 'vkuiButton__content') and text()='Попробовать позже']"
     )
 
+    SKIP_HELP_STEP = (
+        By.XPATH,
+        "//*[contains(@class, 'CloseButton_iconWrapper')]"
+    )
+            
     CREATE_BUTTON = (
         By.XPATH,
          '//*[@data-testid="create-button"]'
