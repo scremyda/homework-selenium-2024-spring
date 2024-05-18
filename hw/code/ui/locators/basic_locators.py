@@ -165,7 +165,7 @@ class CompaniesPageLocators(BasePageLocators):
 
     CONTINUE_BUTTON = (
         By.XPATH,
-        "//*[@id='footer']//button"
+        "//*[@id='footer']//button[contains(@class, 'primary')]"
     )
     
     MOBILEAPP_TARGET = (
@@ -183,16 +183,35 @@ class CompaniesPageLocators(BasePageLocators):
         "//*[@placeholder='Выберите приложение']"
     )
 
+    SAVE_DRAFT_BUTTON = (
+        By.XPATH,
+        "//*[@class='vkuiButton__content' and text()='Сохранить как черновик']"
+    )
+
+    COMPANIES_MENU_BUTTON = (
+        By.XPATH,
+        "/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/div/div[1]/div/section[1]/a[2]/div[2]"
+    )
+
     ROOT = (
         By.CLASS_NAME, 
         'header_logo__7lhb6'
     )
 
-    DROPDOWN_BUTTON = (
-        By.XPATH, 
-        "//*[@id='adPlan']/div/div[2]/div/div[1]/div/div[1]/div"
+    DROPDOWN_BUTTON = (By.XPATH, "//*[@id='adPlan']/div/div[2]/div/div[1]/div/div[1]/div"
     )
 
-    DRAFTS_BUTTON = (By.XPATH, '//*[@data-testid="drafts-button"]')
+    DRAFTS_BUTTON = (
+        By.XPATH,
+        '//*[@data-testid="drafts-button"]'
+    )
 
-    SEARCH_FIELD = (By.XPATH, '//*[@data-testid="filter-search-input"]')
+    SEARCH_FIELD = (
+        By.XPATH,
+        '//*[@data-testid="filter-search-input"]'
+    )
+
+    NO_RESULT = (
+         By.XPATH,
+        "//*[@id='adPlan']/div/div[2]/div/div[2]/div/h2/span"
+    )

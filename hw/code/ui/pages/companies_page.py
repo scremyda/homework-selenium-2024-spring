@@ -1,5 +1,7 @@
 from ui.locators import basic_locators
 from ui.pages.base_page import BasePage
+from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import TimeoutException
 
 
 class CompaniesPage(BasePage):
@@ -17,6 +19,7 @@ class CompaniesPage(BasePage):
         except TimeoutException:
             pass
 
+
     def click_create_btn(self):
         self.click(self.locators.CREATE_BUTTON, 20)
 
@@ -33,17 +36,27 @@ class CompaniesPage(BasePage):
         self.click(self.locators.SITE_TARGET)
 
     def input_site_value(self, url):
+        self.became_visible(self.locators.SITE_INPUT)
         input = self.find(self.locators.SITE_INPUT)
         input.clear()
         input.send_keys(url)
+        input.send_keys(Keys.ENTER)
 
     def input_budget_value(self, budget_value):
+        self.became_visible(self.locators.BUDGET_INPUT)
         input = self.find(self.locators.BUDGET_INPUT)
         input.clear()
         input.send_keys(budget_value)
+        input.send_keys(Keys.ENTER)
 
     def click_contitnue_btn(self):
-        self.click(self.locators.CONTINUE_BUTTON)
+        self.scroll_and_click(self.locators.CONTINUE_BUTTON)
+
+    def click_companies_menu_btn(self):
+        self.scroll_and_click(self.locators.COMPANIES_MENU_BUTTON)
+
+    def click_save_draft_btn(self):
+        self.scroll_and_click(self.locators.SAVE_DRAFT_BUTTON)
 
     def create_company(self, url, budget):
         self.click_create_btn()
@@ -77,3 +90,7 @@ class CompaniesPage(BasePage):
         input = self.find(self.locators.SEARCH_FIELD)
         input.clear()
         input.send_keys(query)
+        input.send_keys(Keys.ENTER)
+
+    def find_no_result(self) -> bool:
+        return self.became_visible(self.locators.NO_RESULT)

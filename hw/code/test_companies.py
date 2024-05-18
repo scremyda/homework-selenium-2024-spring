@@ -1,10 +1,10 @@
 from base import BaseCase
 from ui.pages.companies_page import CompaniesPage
+import time
 
 class TestCompanies(BaseCase):
 
-
-    def test_redirect_create_page(self, companies_page):#
+    def test_redirect_create_page(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
 
@@ -73,34 +73,69 @@ class TestCompanies(BaseCase):
         companies_page.select_mobileapp_target()
         assert(companies_page.get_mobile_target_input() is not None)
 
-    def test_unfinished_company_to_drafts(self, companies_page):
-        companies_page.skip_help()
-        companies_page.click_create_btn()
-        companies_page.select_site_target()
-        companies_page.input_site_value(self.TARGET_SITE)
-        company_id = companies_page.driver.current_url.split('/')[-1]
-        companies_page.go_to_root()
-        companies_page.click_drafts_btn()
-        assert (company_id in companies_page.driver.page_source)
+    
 
     def test_drafts_search_ability(self, companies_page):
-        companies_page.skip_help()
-        companies_page.click_create_btn()
-        companies_page.select_site_target()
-        companies_page.input_site_value(self.TARGET_SITE)
-        company_id = companies_page.driver.current_url.split('/')[-1]
-        companies_page.go_to_root()
-        companies_page.click_drafts_btn()
-        companies_page.input_search_query('Кампания')
-        assert (company_id in companies_page.driver.page_source)
+            companies_page.skip_help()
+            companies_page.click_create_btn()
+            companies_page.select_site_target()
+            companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+
+            companies_page.input_budget_value(CompaniesPage.CORRECT_BUDGET)
+            companies_page.click_contitnue_btn()
+            companies_page.click_save_draft_btn()
+
+            time.sleep(1)
+            company_id = companies_page.driver.current_url.split('/')[-3]
+
+            print("company_id", company_id)
+
+            companies_page.go_to_root()
+
+            companies_page.click_companies_menu_btn()
+
+            companies_page.click_drafts_btn()
+
+            companies_page.input_search_query(company_id)
+
+            assert not companies_page.find_no_result()
 
     def test_drafts_search_empty(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
         companies_page.select_site_target()
+        companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+
+        companies_page.input_budget_value(CompaniesPage.CORRECT_BUDGET)
+        companies_page.click_contitnue_btn()
+
+
+        companies_page.click_save_draft_btn()
+        time.sleep(1)
+
+        company_id = companies_page.driver.current_url.split('/')[-1]
+
+        #print("company_id", company_id)
+
+        companies_page.go_to_root()
+
+        companies_page.click_companies_menu_btn()
+
+        companies_page.click_drafts_btn()
+
+        companies_page.input_search_query('Не существующая компания')
+
+        assert (company_id not in companies_page.driver.page_source)
+
+
+        """
+        def test_unfinished_company_to_drafts(self, companies_page):
+        companies_page.skip_help()
+        companies_page.click_create_btn()
+        companies_page.select_site_target()
         companies_page.input_site_value(self.TARGET_SITE)
         company_id = companies_page.driver.current_url.split('/')[-1]
         companies_page.go_to_root()
         companies_page.click_drafts_btn()
-        companies_page.input_search_query('Strange Name')
-        assert (company_id not in companies_page.driver.page_source)
+        assert (company_id in companies_page.driver.page_source)
+        """

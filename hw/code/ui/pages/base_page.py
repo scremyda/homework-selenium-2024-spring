@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.remote.webdriver import WebDriver as RemoteWebDriver
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from ui.locators import basic_locators
 from selenium.webdriver.common.keys import Keys
@@ -87,3 +87,14 @@ class BasePage(object):
         element = WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(element_locator))
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
+    def scroll_and_click(self, locator, timeout=10) -> WebElement:
+        elem = self.wait(timeout).until(EC.presence_of_element_located(locator))
+        ActionChains(self.driver).move_to_element(elem).click(elem).perform()
+        return elem
+
+    def became_visible(self, locator, timeout=10) -> bool:
+        try:
+            self.wait(timeout).until(EC.visibility_of_element_located(locator))
+            return True
+        except TimeoutException:
+            return False

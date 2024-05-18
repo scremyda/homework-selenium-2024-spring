@@ -69,7 +69,7 @@ def registration_main_page(driver):
 
 @pytest.fixture(scope='session')
 def load_env():
-    load_dotenv('.env')
+    load_dotenv('.test_env')
 
 
 @pytest.fixture(scope='session')
