@@ -12,13 +12,15 @@ class CompaniesPage(BasePage):
     CORRECT_BUDGET = 1000
     TARGET_SITE = "ads.vk.com"
 
+    NEED_FIELD_ALERT = "Обязательное поле"
+    LOW_BUDGET_ALERT = "Бюджет кампании должен быть не меньше 100₽"
+
     def skip_help(self):
         try:
             self.click(self.locators.SKIP_HELP_BUTTON)
             self.click(self.locators.SKIP_HELP_STEP)
         except TimeoutException:
             pass
-
 
     def click_create_btn(self):
         self.click(self.locators.CREATE_BUTTON, 20)
@@ -58,15 +60,20 @@ class CompaniesPage(BasePage):
     def click_save_draft_btn(self):
         self.scroll_and_click(self.locators.SAVE_DRAFT_BUTTON)
 
-    def create_company(self, url, budget):
-        self.click_create_btn()
-        self.select_site_target()
-        self.input_site_value(url)
-        self.input_budget_value(budget)
-        self.click_contitnue_btn()
+    def became_visible_second_step(self) -> bool:
+        return self.became_visible(self.locators.SAVE_DRAFT_BUTTON)
+
+    def became_visible_save_draft_status(self) -> bool:
+        return self.became_visible(self.locators.SAVE_DRAFT_STATUS)
+    
+    def became_visible_no_result(self) -> bool:
+        return self.became_visible(self.locators.NO_RESULT)
 
     def select_mobileapp_target(self):
         self.click(self.locators.MOBILEAPP_TARGET)
+
+    def get_alert(self) -> str:
+        return self.find(self.locators.ALERT).text
 
     def get_target_input(self):
         try:
@@ -92,5 +99,4 @@ class CompaniesPage(BasePage):
         input.send_keys(query)
         input.send_keys(Keys.ENTER)
 
-    def find_no_result(self) -> bool:
-        return self.became_visible(self.locators.NO_RESULT)
+   

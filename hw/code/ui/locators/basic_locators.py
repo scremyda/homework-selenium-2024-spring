@@ -212,6 +212,16 @@ class CompaniesPageLocators(BasePageLocators):
     )
 
     NO_RESULT = (
-         By.XPATH,
+        By.XPATH,
         "//*[@id='adPlan']/div/div[2]/div/div[2]/div/h2/span"
+    )
+
+    ALERT = (
+        By.XPATH,
+        "//*[@role='alert']/div"
+    )
+
+    SAVE_DRAFT_STATUS = (
+        By.XPATH,
+        "//*[contains(@class, 'CreateFooter_draftStatus') and text()='Изменения сохранены']"
     )

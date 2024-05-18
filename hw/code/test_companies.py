@@ -24,7 +24,6 @@ class TestCompanies(BaseCase):
 
     def test_redirect_plans_table(self, companies_page):#
         companies_page.skip_help()    
-        
         companies_page.click_ads_btn()
         companies_page.click_plans_btn()
 
@@ -34,108 +33,87 @@ class TestCompanies(BaseCase):
         companies_page.skip_help()
         companies_page.click_create_btn()
         companies_page.select_site_target()
+
         assert(companies_page.get_target_input() is not None)
-    
 
     def test_site_target_site_is_need(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
         companies_page.select_site_target()
         companies_page.click_contitnue_btn()
-        assert ('Обязательное поле' in companies_page.driver.page_source)
+
+        assert companies_page.get_alert() == companies_page.NEED_FIELD_ALERT 
 
     def test_budget_value_is_need(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
         companies_page.select_site_target()
-        companies_page.input_site_value(self.TARGET_SITE)
+        companies_page.input_site_value(companies_page.TARGET_SITE)
         companies_page.click_contitnue_btn()
-        assert ('Обязательное поле' in companies_page.driver.page_source)
 
+        assert  companies_page.get_alert() == companies_page.NEED_FIELD_ALERT
+        
     def test_low_budget(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
         companies_page.select_site_target()
-        companies_page.input_site_value(self.TARGET_SITE)
-        companies_page.input_budget_value(self.LOW_BUDGET)
+        companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+        companies_page.input_budget_value(CompaniesPage.LOW_BUDGET)
         companies_page.click_contitnue_btn()
-        assert (
-            'Бюджет кампании должен быть не меньше 100₽' in companies_page.driver.page_source)
 
-    def test_correct_data_saved (self, companies_page):
+        assert  companies_page.get_alert() == companies_page.LOW_BUDGET_ALERT
+
+    def test_correct_data_saved(self, companies_page):
         companies_page.skip_help()
-        companies_page.create_company(self.TARGET_SITE, self.CORRECT_BUDGET)
-        assert ('ad_group' in companies_page.driver.current_url.split('/'))
+        companies_page.click_create_btn()
+        companies_page.select_site_target()
+        companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+        companies_page.input_budget_value(CompaniesPage.CORRECT_BUDGET)
+        companies_page.click_contitnue_btn()
+
+        assert companies_page.became_visible_second_step()
 
     def test_form_mobile_is_open(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
         companies_page.select_mobileapp_target()
-        assert(companies_page.get_mobile_target_input() is not None)
 
-    
+        assert companies_page.get_mobile_target_input() is not None
 
     def test_drafts_search_ability(self, companies_page):
-            companies_page.skip_help()
-            companies_page.click_create_btn()
-            companies_page.select_site_target()
-            companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+        companies_page.skip_help()
+        companies_page.click_create_btn()
+        companies_page.select_site_target()
+        companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+        companies_page.input_budget_value(CompaniesPage.CORRECT_BUDGET)
+        companies_page.click_contitnue_btn()
 
-            companies_page.input_budget_value(CompaniesPage.CORRECT_BUDGET)
-            companies_page.click_contitnue_btn()
-            companies_page.click_save_draft_btn()
+        companies_page.click_save_draft_btn()
+        companies_page.became_visible_save_draft_status()
+        company_id = companies_page.driver.current_url.split('/')[-3]
+        companies_page.go_to_root()
 
-            time.sleep(1)
-            company_id = companies_page.driver.current_url.split('/')[-3]
+        companies_page.click_companies_menu_btn()
+        companies_page.click_drafts_btn()
+        companies_page.input_search_query(company_id)
 
-            print("company_id", company_id)
-
-            companies_page.go_to_root()
-
-            companies_page.click_companies_menu_btn()
-
-            companies_page.click_drafts_btn()
-
-            companies_page.input_search_query(company_id)
-
-            assert not companies_page.find_no_result()
+        assert not companies_page.became_visible_no_result()
 
     def test_drafts_search_empty(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
         companies_page.select_site_target()
         companies_page.input_site_value(CompaniesPage.TARGET_SITE)
-
         companies_page.input_budget_value(CompaniesPage.CORRECT_BUDGET)
         companies_page.click_contitnue_btn()
 
-
         companies_page.click_save_draft_btn()
-        time.sleep(1)
-
+        companies_page.became_visible_save_draft_status()
         company_id = companies_page.driver.current_url.split('/')[-1]
-
-        #print("company_id", company_id)
-
         companies_page.go_to_root()
 
         companies_page.click_companies_menu_btn()
-
         companies_page.click_drafts_btn()
-
         companies_page.input_search_query('Не существующая компания')
 
-        assert (company_id not in companies_page.driver.page_source)
-
-
-        """
-        def test_unfinished_company_to_drafts(self, companies_page):
-        companies_page.skip_help()
-        companies_page.click_create_btn()
-        companies_page.select_site_target()
-        companies_page.input_site_value(self.TARGET_SITE)
-        company_id = companies_page.driver.current_url.split('/')[-1]
-        companies_page.go_to_root()
-        companies_page.click_drafts_btn()
-        assert (company_id in companies_page.driver.page_source)
-        """
+        assert companies_page.became_visible_no_result()
