@@ -5,10 +5,10 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
-from ui.locators import basic_locators
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
 
+from ui.locators import basic_locators
 
 
 class PageNotOpenedExeption(Exception):
@@ -45,7 +45,6 @@ class BasePage(object):
     def find(self, locator, timeout: float | None = 10, cond=EC.visibility_of_element_located) -> WebElement:
         return self.wait(timeout).until(cond(locator))
 
-
     def click(self, locator, timeout: float | None = 10) -> WebElement:
         elem = self.wait(timeout).until(EC.element_to_be_clickable(locator))
 
@@ -72,12 +71,10 @@ class BasePage(object):
 
         return elem
 
-
     def fill_in(self, locator, query: str, timeout: float | None = 10) -> WebElement:
         elem = self.clear(locator, timeout)
         elem.send_keys(query)
         return elem
-
 
     def is_enabled(self, locator, timeout=10) -> bool:
         elem = self.find(locator, timeout=timeout)

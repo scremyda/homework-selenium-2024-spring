@@ -1,6 +1,6 @@
-from base import BaseCase
 from ui.pages.settings_page import SettingsPage
 
+from base import BaseCase
 
 
 class TestSettings(BaseCase):
@@ -24,7 +24,7 @@ class TestSettings(BaseCase):
 
         settings_page.open_access_rights_add_account()
 
-        assert settings_page.check_opened_add_account_window() is not None
+        assert settings_page.check_opened_add_account_window()
 
     def test_check_access_add_account_close(self, settings_page: SettingsPage):
         settings_page.open_access_rights()
@@ -53,8 +53,7 @@ class TestSettings(BaseCase):
 
         settings_page.save_access_rights_add_account()
 
-        assert settings_page.get_add_account_save_error() is not None
-
+        assert settings_page.get_add_account_save_error()
 
     def test_check_access_common_redirect(self, settings_page: SettingsPage):
         settings_page.open_access_rights()
@@ -63,13 +62,12 @@ class TestSettings(BaseCase):
 
         assert self.driver.current_url == settings_page.locators.EXPECTED_COMMON_URL
 
-
     def test_common_user_language_list(self, settings_page: SettingsPage):
         settings_page.scroll_to_about_access()
 
         settings_page.open_user_language_list()
 
-        assert settings_page.get_user_language_list is not None
+        assert settings_page.get_user_language_list
 
     def test_common_redirect_help_api(self, settings_page: SettingsPage):
         settings_page.scroll_to_about_access()
@@ -86,7 +84,6 @@ class TestSettings(BaseCase):
         settings_page.open_notifications()
 
         assert self.driver.current_url == settings_page.locators.EXPECTED_NOTIFICATIONS_URL
-
 
     def test_notifications_connect_tg_redirect(self, settings_page: SettingsPage):
         settings_page.open_notifications()
@@ -107,4 +104,4 @@ class TestSettings(BaseCase):
 
         settings_page.open_changed_history_filter()
 
-        assert settings_page.get_history_of_changes_filter is not None
+        assert settings_page.get_history_of_changes_filter

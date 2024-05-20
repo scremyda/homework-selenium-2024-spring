@@ -6,7 +6,6 @@ class RegistrationMainPage(BasePage):
     url = 'https://ads.vk.com/hq/registration'
     locators = basic_locators.RegistrationMainPageLocators()
 
-
     def login(self, login, password):
         self.click(self.locators.MAIL_RU_AUTH)
         self.fill_in(self.locators.MAIL_RU_LOGIN, login)

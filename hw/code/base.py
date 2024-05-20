@@ -1,15 +1,16 @@
-from contextlib import contextmanager
-
 import pytest
+
+from contextlib import contextmanager
 from _pytest.fixtures import FixtureRequest
-from ui.pages.base_page import PageNotOpenedExeption
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+
+from ui.pages.base_page import PageNotOpenedExeption
 
 
 class BaseCase:
     @pytest.fixture(scope='function', autouse=True)
-    def setup(self, driver, config, request: FixtureRequest):
+    def setup(self, driver: WebDriver, config: Dict, request: FixtureRequest):
         self.driver = driver
         self.config = config
 

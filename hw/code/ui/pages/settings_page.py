@@ -1,5 +1,7 @@
 import time
+
 from selenium.common.exceptions import TimeoutException
+
 from ui.locators import basic_locators
 from ui.pages.base_page import BasePage
 

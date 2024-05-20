@@ -1,8 +1,8 @@
-from ui.locators import basic_locators
-from ui.pages.base_page import BasePage
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
 
+from ui.locators import basic_locators
+from ui.pages.base_page import BasePage
 
 class CompaniesPage(BasePage):
     url = 'https://ads.vk.com/hq/dashboard/ads'
@@ -69,23 +69,17 @@ class CompaniesPage(BasePage):
     def became_visible_no_result(self) -> bool:
         return self.became_visible(self.locators.NO_RESULT)
 
+    def became_visible_target_input(self)  -> bool:
+        return self.became_visible(self.locators.TARGET_INPU)
+
+    def became_visible_mobile_target_input(self):
+        return self.became_visible(self.locators.MOBILE_TARGET_INPUT)
+
     def select_mobileapp_target(self):
         self.click(self.locators.MOBILEAPP_TARGET)
 
     def get_alert(self) -> str:
         return self.find(self.locators.ALERT).text
-
-    def get_target_input(self):
-        try:
-            return self.find(self.locators.TARGET_INPUT)
-        except TimeoutException:
-            return None
-        
-    def get_mobile_target_input(self):
-        try:
-            return self.find(self.locators.MOBILE_TARGET_INPUT)
-        except TimeoutException:
-            return None
         
     def go_to_root(self):
         self.click(self.locators.ROOT)

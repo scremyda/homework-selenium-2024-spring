@@ -8,7 +8,6 @@ class BasePageLocators:
         return (By.XPATH, f"//*[@data-test-id='{id}']")
 
 
-
 class RegistrationMainPageLocators(BasePageLocators):
     MAIL_RU_AUTH = BasePageLocators.BY_MAIL_TEST_ID("oAuthService_mail_ru")
     MAIL_RU_SHOW_PASSWORD = BasePageLocators.BY_MAIL_TEST_ID("next-button")
@@ -115,6 +114,7 @@ class SettingsPageLocators(BasePageLocators):
         By.XPATH,
         "//*[contains(@class, 'vkuiTappable') and text()='Подробнее о доступе']"
     )
+
 
 class CompaniesPageLocators(BasePageLocators):
 

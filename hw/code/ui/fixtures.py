@@ -1,14 +1,15 @@
 import os
-
 import pytest
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from dotenv import load_dotenv
+
 from ui.pages.base_page import BasePage
 from ui.pages.overview_page import OverviewPage
 from ui.pages.settings_page import SettingsPage
 from ui.pages.companies_page import CompaniesPage
 from ui.pages.registration_page import RegistrationMainPage, RegistrationPage
-from dotenv import load_dotenv
 
 
 @pytest.fixture()
@@ -17,6 +18,7 @@ def driver(config):
     url = config['url']
     selenoid = config['selenoid']
     vnc = config['vnc']
+
     if selenoid:
         options = Options()
         capabilities = {
@@ -27,19 +29,17 @@ def driver(config):
             capabilities['enableVNC'] = True
         options.default_capabilities = capabilities
 
-        #ChromeOptions = webdriver.ChromeOptions()
-        #ChromeOptions.add_argument('--ignore-certificate-errors-spki-list')
-        #ChromeOptions.add_argument('--ignore-certificate-errors')
-        #ChromeOptions.add_argument('--ignore-ssl-errors')
-
         driver = webdriver.Remote(
             'http://127.0.0.1:4444/wd/hub', options=options)
-    elif browser == 'chrome':
-        driver = webdriver.Chrome()
-    elif browser == 'firefox':
-        driver = webdriver.Firefox()
     else:
-        raise RuntimeError(f'Unsupported browser: "{browser}"')
+        match browser:
+            case 'chrome':
+                driver = webdriver.Chrome()
+            case 'firefox':
+                driver = webdriver.Firefox()
+            case _:
+                raise RuntimeError(f'Unsupported browser: "{browser}"')
+
     driver.get(url)
     driver.maximize_window()
     yield driver
@@ -60,6 +60,7 @@ def get_driver(browser_name):
 @pytest.fixture
 def base_page(driver):
     return BasePage(driver=driver)
+
 
 @pytest.fixture
 def registration_main_page(driver):
@@ -87,6 +88,7 @@ def hq_page(registration_main_page, credentials):
 def settings_page(hq_page):
     hq_page.driver.get(SettingsPage.url)
     return SettingsPage(hq_page.driver)
+
 
 @pytest.fixture
 def companies_page(hq_page):
