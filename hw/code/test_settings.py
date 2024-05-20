@@ -33,7 +33,7 @@ class TestSettings(BaseCase):
 
         settings_page.close_access_rights_add_account()
 
-        assert settings_page.check_opened_add_account_window() is None
+        assert settings_page.check_opened_add_account_window()
 
     def test_check_access_add_account_id(self, settings_page: SettingsPage):
         settings_page.open_access_rights()

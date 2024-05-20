@@ -1,7 +1,9 @@
 import pytest
 
 from contextlib import contextmanager
+from typing import Dict
 from _pytest.fixtures import FixtureRequest
+from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 

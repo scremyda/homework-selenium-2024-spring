@@ -69,10 +69,10 @@ class CompaniesPage(BasePage):
     def became_visible_no_result(self) -> bool:
         return self.became_visible(self.locators.NO_RESULT)
 
-    def became_visible_target_input(self)  -> bool:
-        return self.became_visible(self.locators.TARGET_INPU)
+    def became_visible_target_input(self) -> bool:
+        return self.became_visible(self.locators.SITE_INPUT)
 
-    def became_visible_mobile_target_input(self):
+    def became_visible_mobile_target_input(self) -> bool:
         return self.became_visible(self.locators.MOBILE_TARGET_INPUT)
 
     def select_mobileapp_target(self):

@@ -173,11 +173,6 @@ class CompaniesPageLocators(BasePageLocators):
         "//*[@data-id='mobapps']"
     )
 
-    TARGET_INPUT = (
-        By.XPATH,
-        '//*[@id="new_ad_create"]/div/div/div/div/div/section[3]/form/div/div/div[1]'
-    )
-
     MOBILE_TARGET_INPUT = (
         By.XPATH,
         "//*[@placeholder='Выберите приложение']"
