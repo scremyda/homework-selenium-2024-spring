@@ -5,7 +5,7 @@ from base import BaseCase
 
 class TestSettings(BaseCase):
     INPUT_ADD_ACCOUNT_VK_ID = "123456789"
-
+    
     def test_check_access_redirect(self, settings_page: SettingsPage):
         settings_page.open_access_rights()
 

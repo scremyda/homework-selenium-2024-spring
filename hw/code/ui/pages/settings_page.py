@@ -31,8 +31,8 @@ class SettingsPage(BasePage):
     def close_access_rights_add_account(self):
         self.click(self.locators.CLOSE_ACCESS_RIGHTS_ADD_ACCOUNT)
 
-    def check_opened_add_account_window(self):
-        return self.wait_for_modal(self.locators.WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT)
+    def check_opened_add_account_window(self) -> bool:
+        return self.became_visible(self.locators.WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT)
 
     def get_add_account_window_id_input(self):
         return self.find(self.locators.WINDOW_ACCESS_RIGHTS_ADD_ACCOUNT_ID)
