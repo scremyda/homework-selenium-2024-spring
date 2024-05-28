@@ -39,6 +39,24 @@ class SettingsPageLocators(BasePageLocators):
         By.XPATH, "//*[contains(@class, 'vkuiSimpleCell__content') and text()='Настройки']"
     )
 
+    HEADER_ACCOUNTS = (
+        By.XPATH, "//*[contains(@class, 'Summary_title') and text()='Мультиаккаунты']"
+    )
+
+    HEADER_ACCESS = (
+        By.XPATH, "//*[contains(@class, 'Headline_title') and text()='Как дать доступ к своему кабинету']"
+    )
+
+    HEADER_CHANGE_ACCESS = (
+        By.XPATH,
+        "//*[contains(@class, 'Headline_title') and text()='Как изменить или отозвать доступ к своему кабинету']"
+    )
+
+    HEADER_OTHER_ACCOUNTS_ACCESS = (
+        By.XPATH,
+        "//*[contains(@class, 'Headline_title') and text()='Доступ к другим кабинетам']"
+    )
+
     OPEN_ACCESS_RIGHTS = (
         By.XPATH, "//*[contains(@class, 'vkuiTabsItem__label') and text()='Права доступа']"
     )
@@ -71,6 +89,10 @@ class SettingsPageLocators(BasePageLocators):
         By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Добавить кабинет']"
     )
 
+    OPEN_EXTENDED_RIGHTS = (
+        By.XPATH, "//*[contains(@class, 'vkuiTypography') and text()='Расширенные права']"
+    )
+
     CLOSE_ACCESS_RIGHTS_ADD_ACCOUNT = (
         By.XPATH,
         "//*[contains(@class, 'vkuiModalDismissButton')]"
@@ -96,6 +118,31 @@ class SettingsPageLocators(BasePageLocators):
         "//*[@role='alert' and text()='Обязательное поле']"
     )
 
+    TEXT_ACCESS_ACCOUNTS = (
+        By.XPATH,
+        "//*[contains(@class, 'vkuiTypography') and text()='Доступа к другим кабинетам пока нет']"
+    )
+
+    BUTTON_ADD_ACCOUNTS = (
+        By.XPATH,
+        "//*[contains(@class, 'vkuiButton') and text()='Добавить кабинет']"
+    )
+
+    LINK_DETAILS= (
+        By.XPATH,
+        "//*[contains(@class, 'vkuiLink') and text()='Подробнее']"
+    )
+
+    ACCESS_COMPANIES = (
+        By.XPATH,
+        "//*[contains(@class, 'vkuiTypography') and text()='Доступ к кампаниям']"
+    )
+
+    ACCESS_MONEY = (
+        By.XPATH,
+        "//*[contains(@class, 'vkuiTypography') and text()='Доступ к финансовой информации']"
+    )
+
     OPEN_USER_LANGUAGE_LIST = (
         By.XPATH, "//*[@role='combobox' and @aria-expanded='false']"
     )
@@ -107,7 +154,7 @@ class SettingsPageLocators(BasePageLocators):
 
     HISTORY_FILTER = (
         By.XPATH,
-        "//*[contains(@class, 'FilterBlock_layout__UVMxX')]"
+        "//*[contains(@class, 'FilterBlock_layout')]"
     )
 
     OPEN_MORE_ABOUT_ACCESS = (

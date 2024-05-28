@@ -61,6 +61,31 @@ class BasePage(object):
         except TimeoutException:
             return None
 
+    def scroll_until_element_found(self, xpath):
+
+        try:
+            element = self.find(xpath)
+            return element
+        except Exception:
+            pass
+
+        last_height = self.driver.execute_script("return document.body.scrollHeight")
+
+        while True:
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+            new_height = self.driver.execute_script("return document.body.scrollHeight")
+
+            if new_height == last_height:
+                break
+            last_height = new_height
+
+        try:
+            element = self.find(xpath)
+            return element
+        except Exception:
+            return None
+
     def clear(self, locator, timeout: float | None = 10) -> WebElement:
         elem = self.find(locator, timeout)
         elem.clear()
