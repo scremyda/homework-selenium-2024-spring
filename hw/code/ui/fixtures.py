@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
 
 from ui.pages.base_page import BasePage
-from ui.pages.overview_page import OverviewPage
+from ui.pages.surveys_page import SurveysPage
 from ui.pages.settings_page import SettingsPage
 from ui.pages.companies_page import CompaniesPage
 from ui.pages.registration_page import RegistrationMainPage, RegistrationPage
@@ -79,15 +79,15 @@ def credentials(load_env):
 
 
 @pytest.fixture
-def hq_page(registration_main_page, credentials):
+def serveys_page(registration_main_page, credentials):
     registration_main_page.login(*credentials)
-    return OverviewPage(registration_main_page.driver)
+    return SurveysPage(registration_main_page.driver)
 
 
 @pytest.fixture
-def settings_page(hq_page):
-    hq_page.driver.get(SettingsPage.url)
-    return SettingsPage(hq_page.driver)
+def settings_page(serveys_page):
+    serveys_page.driver.get(SettingsPage.url)
+    return SettingsPage(serveys_page.driver)
 
 
 @pytest.fixture
