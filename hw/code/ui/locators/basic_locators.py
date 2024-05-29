@@ -202,12 +202,12 @@ class CompaniesPageLocators(BasePageLocators):
 
     SITE_INPUT = (
         By.XPATH,
-        "//*[@placeholder='Введите ссылку на сайт']"
+        "//input[@placeholder='Введите ссылку на сайт']"
     )
 
     BUDGET_INPUT = (
         By.XPATH,
-        "//*[contains(@class, 'Budget_input__')]/input"
+        "//span[contains(@class, 'Budget_input')]/child::input"
     )
 
     CONTINUE_BUTTON = (
@@ -232,30 +232,27 @@ class CompaniesPageLocators(BasePageLocators):
 
     COMPANIES_MENU_BUTTON = (
         By.XPATH,
-        "/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/div/div[1]/div/section[1]/a[2]/div[2]"
+        "//span[text()='Кампании']/parent::div[contains(@class, 'MenuCell_text')]"
     )
 
     ROOT = (
-        By.CLASS_NAME, 
-        'header_logo__7lhb6'
-    )
-
-    DROPDOWN_BUTTON = (By.XPATH, "//*[@id='adPlan']/div/div[2]/div/div[1]/div/div[1]/div"
+        By.XPATH, 
+        "//button[contains(@class, 'header_logo')]"
     )
 
     DRAFTS_BUTTON = (
         By.XPATH,
-        '//*[@data-testid="drafts-button"]'
+        "//button[@data-testid='drafts-button']"
     )
 
     SEARCH_FIELD = (
         By.XPATH,
-        '//*[@data-testid="filter-search-input"]'
+        "//input[@data-testid='filter-search-input']"
     )
 
     NO_RESULT = (
         By.XPATH,
-        "//*[@id='adPlan']/div/div[2]/div/div[2]/div/h2/span"
+        "//span[contains(@class, 'EmptyPlaceholder_title')]"
     )
 
     ALERT = (
