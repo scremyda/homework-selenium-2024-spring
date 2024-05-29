@@ -19,6 +19,15 @@ class RegistrationMainPageLocators(BasePageLocators):
 class RegistrationPageLocators(BasePageLocators):
     EMAIL_INPUT = (By.NAME, "email")
 
+class SurveysPageLocators(BasePageLocators):
+    OPEN_SURVEYS = (
+        By.XPATH, "//*[contains(@class, 'vkuiTypography') and text()='Опросы']"
+    )
+
+    OPEN_LEAD_FORMS = (
+        By.XPATH, "//*[text()='Лид-формы и опросы']"
+    )
+
 
 class SettingsPageLocators(BasePageLocators):
     EXPECTED_ACCESS_URL = "https://ads.vk.com/hq/settings/access"
