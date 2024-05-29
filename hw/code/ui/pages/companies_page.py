@@ -34,18 +34,25 @@ class CompaniesPage(BasePage):
     def click_ads_btn(self):
         self.click(self.locators.ADS_BUTTON)
 
+    def wait_site_target(self):
+        self.became_visible(self.locators.SITE_TARGET)
+
     def select_site_target(self):
         self.click(self.locators.SITE_TARGET)
 
-    def input_site_value(self, url):
+    def wait_input_site(self):
         self.became_visible(self.locators.SITE_INPUT)
+
+    def input_site_value(self, url):
         input = self.find(self.locators.SITE_INPUT)
         input.clear()
         input.send_keys(url)
         input.send_keys(Keys.ENTER)
 
-    def input_budget_value(self, budget_value):
+    def wait_input_budget(self):
         self.became_visible(self.locators.BUDGET_INPUT)
+
+    def input_budget_value(self, budget_value):
         input = self.find(self.locators.BUDGET_INPUT)
         input.clear()
         input.send_keys(budget_value)

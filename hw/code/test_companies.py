@@ -33,6 +33,7 @@ class TestCompanies(BaseCase):
     def test_form_site_is_open(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
+        companies_page.wait_site_target()
         companies_page.select_site_target()
 
         assert companies_page.became_visible_target_input()
@@ -40,6 +41,7 @@ class TestCompanies(BaseCase):
     def test_site_target_site_is_need(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
+        companies_page.wait_site_target()
         companies_page.select_site_target()
         companies_page.click_contitnue_btn()
 
@@ -48,27 +50,35 @@ class TestCompanies(BaseCase):
     def test_budget_value_is_need(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
+        companies_page.wait_site_target()
         companies_page.select_site_target()
+        companies_page.wait_input_site()
         companies_page.input_site_value(companies_page.TARGET_SITE)
         companies_page.click_contitnue_btn()
 
-        assert  companies_page.get_alert() == companies_page.NEED_FIELD_ALERT
+        assert ompanies_page.get_alert() == companies_page.NEED_FIELD_ALERT
         
     def test_low_budget(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
+        companies_page.wait_site_target()
         companies_page.select_site_target()
+        companies_page.wait_input_site()
         companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+        companies_page.wait_input_budget()
         companies_page.input_budget_value(CompaniesPage.LOW_BUDGET)
         companies_page.click_contitnue_btn()
 
-        assert  companies_page.get_alert() == companies_page.LOW_BUDGET_ALERT
+        assert companies_page.get_alert() == companies_page.LOW_BUDGET_ALERT
 
     def test_correct_data_saved(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
+        companies_page.wait_site_target()
         companies_page.select_site_target()
+        companies_page.wait_input_site()
         companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+        companies_page.wait_input_budget()
         companies_page.input_budget_value(CompaniesPage.CORRECT_BUDGET)
         companies_page.click_contitnue_btn()
 
@@ -84,8 +94,11 @@ class TestCompanies(BaseCase):
     def test_drafts_search_ability(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
+        companies_page.wait_site_target()
         companies_page.select_site_target()
+        companies_page.wait_input_site()
         companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+        companies_page.wait_input_budget()
         companies_page.input_budget_value(CompaniesPage.CORRECT_BUDGET)
         companies_page.click_contitnue_btn()
 
@@ -103,8 +116,11 @@ class TestCompanies(BaseCase):
     def test_drafts_search_empty(self, companies_page):
         companies_page.skip_help()
         companies_page.click_create_btn()
+        companies_page.wait_site_target()
         companies_page.select_site_target()
+        companies_page.wait_input_site()
         companies_page.input_site_value(CompaniesPage.TARGET_SITE)
+        companies_page.wait_input_budget()
         companies_page.input_budget_value(CompaniesPage.CORRECT_BUDGET)
         companies_page.click_contitnue_btn()
 
