@@ -165,6 +165,3 @@ class TestSurveys(BaseCase):
         serveys_page.choose_result_btn()
 
         assert serveys_page.get_alert_empty_input()
-
-
-
