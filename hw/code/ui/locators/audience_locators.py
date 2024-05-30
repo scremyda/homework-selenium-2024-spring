@@ -40,7 +40,7 @@ class AudiencePageLocators:
 
     CREATE_USER_LIST_BUTTON = (
         By.XPATH,
-        "//span[text()='Загрузить список']"
+        "//button[@data-testid='create-audience']"
     )
 
     USER_LIST_TYPE_INPUT = (
@@ -73,3 +73,31 @@ class AudiencePageLocators:
         "//h2[text()='Не удалось загрузить файл']"
     )
     
+    USER_LIST_SEARCH_FIELD = (
+        By.XPATH,
+        "//input[@data-testid='search-input']"
+    )
+
+    TITLE_LENGTH = (
+        By.XPATH,
+        "//div[contains(@class, 'CreateSegmentModal')]/child::div[@class='']"
+    )
+
+    SELECTOR_CONDITIONAL_BUTTON = (
+        By.XPATH,
+        "//h4[text()='Включить пользователей, которые соответствуют']/descendant::div[contains(@class, 'HintSelector')]"
+    )
+
+    @staticmethod
+    def SELECT_CONDITION(condition):
+        return By.XPATH, f"//span[text()='{condition}']"
+
+    CLOSE_ICON = (
+        By.XPATH,
+        "//button[@aria-label='Close']"
+    )
+
+    WARNING_MODEL = (
+        By.XPATH,
+        "//h2[text()='Прервать создание?']"
+    )
