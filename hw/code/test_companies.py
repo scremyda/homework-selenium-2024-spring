@@ -10,7 +10,7 @@ class TestCompanies(BaseCase):
 
         assert self.is_url_open('https://ads.vk.com/hq/new_create/ad_plan')
 
-    '''def test_redirect_groups_table(self, companies_page):
+    def test_redirect_groups_table(self, companies_page):
         companies_page.skip_help()
         companies_page.click_groups_btn()
 
@@ -133,4 +133,3 @@ class TestCompanies(BaseCase):
         companies_page.input_search_query('Не существующая компания')
 
         assert companies_page.became_visible_no_result()
-'''

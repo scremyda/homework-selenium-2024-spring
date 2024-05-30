@@ -52,6 +52,8 @@ class BasePage(object):
             return add_room_modal
         except TimeoutException:
             return None
+    def execute_script(self, script):
+        self.driver.execute_script(script)
 
     def scroll_until_element_found(self, xpath):
 

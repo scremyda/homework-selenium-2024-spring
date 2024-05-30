@@ -78,10 +78,12 @@ def load_env():
 def credentials(load_env):
     return (os.getenv("LOGIN"), os.getenv("PASSWORD"))
 
+
 @pytest.fixture
 def hq_page(registration_page, credentials):
     registration_page.login(*credentials)
     return BasePage(registration_page.driver)
+
 
 @pytest.fixture
 def settings_page(hq_page):
@@ -94,10 +96,12 @@ def companies_page(hq_page):
     hq_page.driver.get(CompaniesPage.url)
     return CompaniesPage(hq_page.driver)
 
+
 @pytest.fixture
 def serveys_page(hq_page):
     hq_page.driver.get(SurveysPage.url)
     return SurveysPage(hq_page.driver)
+
 
 @pytest.fixture
 def audience_page(hq_page):
