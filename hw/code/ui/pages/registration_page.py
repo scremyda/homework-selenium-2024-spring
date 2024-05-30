@@ -1,10 +1,10 @@
-from ui.locators import basic_locators
+from ui.locators.registration_locators import RegistrationPageLocators
 from ui.pages.base_page import BasePage
 
 
 class RegistrationMainPage(BasePage):
     url = 'https://ads.vk.com/hq/registration'
-    locators = basic_locators.RegistrationMainPageLocators()
+    locators = RegistrationPageLocators()
 
     def login(self, login, password):
         self.click(self.locators.MAIL_RU_AUTH)
@@ -16,4 +16,4 @@ class RegistrationMainPage(BasePage):
 
 class RegistrationPage(BasePage):
     url = 'https://ads.vk.com/hq/registration/new'
-    locators = basic_locators.RegistrationPageLocators()
+    locators = RegistrationPageLocators()

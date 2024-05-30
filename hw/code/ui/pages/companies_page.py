@@ -1,12 +1,12 @@
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
 
-from ui.locators import basic_locators
+from ui.locators.companies_locators import CompaniesPageLocators
 from ui.pages.base_page import BasePage
 
 class CompaniesPage(BasePage):
     url = 'https://ads.vk.com/hq/dashboard/ads'
-    locators = basic_locators.CompaniesPageLocators()
+    locators = CompaniesPageLocators()
 
     LOW_BUDGET = 10
     CORRECT_BUDGET = 1000

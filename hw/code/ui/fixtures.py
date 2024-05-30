@@ -91,6 +91,11 @@ def settings_page(serveys_page):
 
 
 @pytest.fixture
-def companies_page(hq_page):
-    hq_page.driver.get(CompaniesPage.url)
-    return CompaniesPage(hq_page.driver)
+def companies_page(self):
+    self.driver.get(CompaniesPage.url)
+    return CompaniesPage(self.driver)
+
+@pytest.fixture
+def audience_page(self):
+    self.driver.get(AudiencePagePage.url)
+    return AudiencePagePage(self.driver)

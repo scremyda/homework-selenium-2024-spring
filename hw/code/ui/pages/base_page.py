@@ -8,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
 
-from ui.locators import basic_locators
+from ui.locators.basic_locators import BasePageLocators
 
 
 class PageNotOpenedExeption(Exception):
@@ -16,7 +16,7 @@ class PageNotOpenedExeption(Exception):
 
 
 class BasePage(object):
-    locators = basic_locators.BasePageLocators()
+    locators = BasePageLocators()
     url = 'https://ads.vk.com/'
 
     def is_opened(self, timeout=30):
@@ -32,12 +32,6 @@ class BasePage(object):
         self.is_opened()
 
         self.close_cookie_banner()
-
-    def close_cookie_banner(self):
-        try:
-            self.click(self.locators.COOKIE_BANNER_BUTTON)
-        except:
-            pass
 
     def wait(self, timeout: float | None = 10):
         return WebDriverWait(self.driver, timeout=timeout)
