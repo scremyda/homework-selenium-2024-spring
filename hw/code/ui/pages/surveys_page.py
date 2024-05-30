@@ -1,3 +1,5 @@
+import time
+
 from ui.locators.surveys_locators import SurveysPageLocators
 from ui.pages.base_page import BasePage
 
@@ -9,7 +11,7 @@ class SurveysPage(BasePage):
         self.click(self.locators.OPEN_SURVEYS)
 
     def create_survey(self):
-        self.click(self.locators.CREATE_SURVEY)
+        self.click(self.locators.CREATE_SURVEY,5)
 
     def open_survey_questions(self):
         self.click(self.locators.CREATE_SURVEYS_QUESTIONS)
@@ -63,12 +65,39 @@ class SurveysPage(BasePage):
         self.click(self.locators.DARK_THEME_SURVEY)
 
     def get_dark_theme_survey(self):
-        element =  self.find(self.locators.FORM_DARK_THEME_SURVEY)
-        bg_color = element.get_css_property("background-color")
+        return  self.find(self.locators.FORM_DARK_THEME_SURVEY)
 
-        # Проверка, что цвет фона точно соответствует #141414
-        if bg_color.strip() == "#141414":
-            print("Цвет фона элемента точно соответствует #141414.")
-        else:
-            print("Цвет фона элемента не соответствует #141414. Текущий цвет:", bg_color)
+    def get_white_theme_survey(self):
+        return  self.find(self.locators.FORM_WHITE_THEME_SURVEY)
+
+    def write_name_survey_input(self, input_vk_id):
+        input_vk_id.send_keys(self.locators.INPUT_TEST_LOGIC)
+
+    def write_company_name_survey_input(self, input_vk_id):
+        input_vk_id.send_keys(self.locators.INPUT_TEST_LOGIC)
+
+    def write_header_survey_input(self, input_vk_id):
+        input_vk_id.send_keys(self.locators.INPUT_TEST_LOGIC)
+
+    def write_description_survey_input(self, input_vk_id):
+        input_vk_id.send_keys(self.locators.INPUT_TEST_LOGIC)
+
+    def open_upload_image(self):
+        self.click(self.locators.SURVEY_UPLOAD_INPUT)
+
+    def choose_upload_image(self):
+        self.click(self.locators.CHOOSE_DEFAULT_IMAGE)
+
+    def choose_questions(self):
+        time.sleep(2)
+        self.click(self.locators.CHOOSE_QUESTIONS,5)
+
+    def get_emergency_brake(self):
+        return self.find(self.locators.CHOOSE_EMERGENCY_BREAK)
+
+    def get_add_question(self):
+        return self.find(self.locators.CHOOSE_ADD_QUESTIONS)
+
+    def get_questions(self):
+        return self.find(self.locators.CHOOSE_QUESTIONS)
 

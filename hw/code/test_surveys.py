@@ -58,6 +58,46 @@ class TestSurveys(BaseCase):
 
         serveys_page.create_survey()
 
-        # serveys_page.choose_dark_theme_survey()
-        # assert serveys_page.get_dark_theme_survey()
+        assert serveys_page.get_dark_theme_survey()
+
+
+    def test_choose_white_theme_survey(self, serveys_page):
+        serveys_page.open_lead_form_page()
+        serveys_page.open_surveys_page()
+
+        serveys_page.create_survey()
+
+        assert serveys_page.get_white_theme_survey()
+
+
+    def test_choose_question_survey(self, serveys_page):
+        serveys_page.open_lead_form_page()
+        serveys_page.open_surveys_page()
+
+        serveys_page.create_survey()
+
+        assert serveys_page.get_name_survey_input()
+        assert serveys_page.get_company_name_survey_input()
+        assert serveys_page.get_header_survey_input()
+        assert serveys_page.get_description_survey_input()
+        assert serveys_page.get_upload_survey_input()
+
+        serveys_page.write_name_survey_input(serveys_page.get_name_survey_input())
+
+        serveys_page.write_company_name_survey_input(serveys_page.get_company_name_survey_input())
+
+        serveys_page.write_header_survey_input(serveys_page.get_header_survey_input())
+
+        serveys_page.write_description_survey_input(serveys_page.get_description_survey_input())
+
+        serveys_page.open_upload_image()
+
+        serveys_page.choose_upload_image()
+
+        serveys_page.choose_questions()
+
+
+        assert serveys_page.get_add_question()
+
+        assert serveys_page.get_emergency_brake()
 

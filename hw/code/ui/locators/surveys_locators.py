@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class SurveysPageLocators:
+    INPUT_TEST_LOGIC = "test123456789"
+
     OPEN_SURVEYS = (
         By.XPATH, "//*[contains(@class, 'vkuiTypography') and text()='Опросы']"
     )
@@ -42,8 +44,33 @@ class SurveysPageLocators:
         By.XPATH, "//*[contains(@class, 'BaseTable') and text()='Дата создания']"
     )
 
+    FORM_WHITE_THEME_SURVEY = (
+        By.XPATH, "//*[contains(@class, 'LeadForm-module')]"
+    )
+
+    CHOOSE_DEFAULT_IMAGE = (
+        By.XPATH, "//*[contains(@class, 'ImageItems_image__')]"
+    )
+
     TABLE_SURVEY_ID = (
         By.XPATH, "//*[contains(@class, 'BaseTable') and text()='ID']"
+    )
+
+    CHOOSE_QUESTIONS = (
+        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Вопросы']"
+    )
+
+    CHOOSE_EMERGENCY_BREAK = (
+        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Добавить стоп-экран']"
+    )
+
+    CHOOSE_ADD_QUESTIONS = (
+        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Добавить вопрос']"
+    )
+
+
+    GET_QUESTIONS = (
+        By.XPATH, "//*[text()='Вопросы']"
     )
 
     SURVEY_NAME_INPUT = (

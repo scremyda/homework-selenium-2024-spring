@@ -59,7 +59,7 @@ class SettingsPageLocators:
     )
 
     OPEN_CONNECT_TG = (
-        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Подключить']"
+        By.XPATH, "//*[contains(@class, 'Telegram_title') and text()='Сообщение в Telegram']"
     )
 
     OPEN_ACCESS_RIGHTS_DETAILS = (
@@ -67,7 +67,7 @@ class SettingsPageLocators:
     )
 
     OPEN_ACCESS_RIGHTS_ADD_ACCOUNT = (
-        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Добавить кабинет']"
+        By.XPATH, "//*[contains(@class, 'vkuiButton') and text()='Добавить кабинет']"
     )
 
     OPEN_EXTENDED_RIGHTS = (

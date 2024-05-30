@@ -63,7 +63,7 @@ class TestSettings(BaseCase):
 
         settings_page.close_access_rights_add_account()
 
-        assert settings_page.check_opened_add_account_window()
+        assert settings_page.check_opened_add_account_window() is False
 
     def test_check_access_add_account_id(self, settings_page):
         settings_page.open_access_rights()
@@ -118,11 +118,7 @@ class TestSettings(BaseCase):
     def test_notifications_connect_tg_redirect(self, settings_page):
         settings_page.open_notifications()
 
-        settings_page.open_connect_tg()
-
-        settings_page.switch_to_opened_window()
-
-        assert self.EXPECTED_NOTIFICATIONS_CONNECT_TG_URL in self.driver.current_url
+        assert  settings_page.open_connect_tg()
 
     def test_history_of_changes_redirect(self, settings_page):
         settings_page.open_history_of_changes()

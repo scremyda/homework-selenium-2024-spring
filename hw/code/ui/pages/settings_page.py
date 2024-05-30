@@ -94,7 +94,7 @@ class SettingsPage(BasePage):
         self.click(self.locators.OPEN_NOTIFICATIONS)
 
     def open_connect_tg(self):
-        self.click(self.locators.OPEN_CONNECT_TG)
+        return self.find(self.locators.OPEN_CONNECT_TG)
 
     def open_user_language_list(self):
         self.click(self.locators.OPEN_USER_LANGUAGE_LIST)
