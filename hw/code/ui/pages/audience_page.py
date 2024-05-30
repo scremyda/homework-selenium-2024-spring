@@ -118,7 +118,6 @@ class AudiencePage(BasePage):
         self.click(self.locators.SELECTOR_CONDITIONAL_BUTTON)
 
     def select_conditional(self, condition: str):
-        print(condition)
         self.click(self.locators.SELECT_CONDITION(condition))
 
     def click_close_icon(self):

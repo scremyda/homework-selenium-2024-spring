@@ -55,7 +55,7 @@ class CompaniesPageLocators:
     
     MOBILEAPP_TARGET = (
         By.XPATH,
-        "//*[@data-id='mobapps']"
+        "//div[@data-id='mobapps']"
     )
 
     MOBILE_TARGET_INPUT = (
@@ -101,4 +101,47 @@ class CompaniesPageLocators:
     SAVE_DRAFT_STATUS = (
         By.XPATH,
         "//*[contains(@class, 'CreateFooter_draftStatus') and text()='Изменения сохранены']"
+    )  
+
+    WARNING_MIN_LENGTH = (
+        By.XPATH,
+        "//div[text()='Минимальное количество символов 3']"
     )
+
+    FILTER_SAVE_BUTTON = (
+        By.XPATH,
+        "//span[text()='Сохранить']"
+    )
+
+    FILTER_SAVE_MODAL_BUTTON = (
+        By.XPATH,
+        "//button[contains(@class, 'SaveFilterModal_button')]/descendant::span[text()='Сохранить']"
+    )
+
+    FILTER_FORM_ERROR = (
+        By.XPATH,
+        "//span[@role='alert']/div"
+    )
+
+    FILTER_TITLE_MODAL_INPUT = (
+        By.XPATH,
+        "//input[contains(@class, 'vkuiInput__el')]"
+    )
+
+    FILTER_BUTTON = (
+        By.XPATH,
+        "//span[text()='Фильтр']"
+    )
+
+    SAVED_FILTER_BUTTON = (
+        By.XPATH,
+        "//span[text()='Сохранённые']"
+    )
+
+    @staticmethod
+    def SEARCH_SAVED_FILTER(filter):
+        return By.XPATH, f"//span[contains(@class, 'vkuiTypography ') and text()='{filter}']"
+
+    @staticmethod
+    def DELETE_SAVED_FILTER(filter):
+        return By.XPATH, f"//span[contains(@class, 'vkuiTypography ') and text()='{filter}']/following-sibling::span[@class='vkuiSimpleCell__badge']"
