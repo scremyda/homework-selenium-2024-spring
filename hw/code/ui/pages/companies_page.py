@@ -14,14 +14,14 @@ class CompaniesPage(BasePage):
 
     NEED_FIELD_ALERT = "Обязательное поле"
     LOW_BUDGET_ALERT = "Бюджет кампании должен быть не меньше 100₽"
-
+    
     def skip_help(self):
         try:
             self.click(self.locators.SKIP_HELP_BUTTON)
             self.click(self.locators.SKIP_HELP_STEP)
         except TimeoutException:
             pass
-    
+            
     def is_visible_create_company_btn(self) -> bool:
         return self.became_visible(self.locators.CREATE_BUTTON)
 
@@ -139,7 +139,7 @@ class CompaniesPage(BasePage):
         input.send_keys(title)
         
     def is_visible_filter_button(self) -> bool:
-        return self.became_visible(self.locators.FILTER_BUTTON)
+        return self.is_enabled(self.locators.FILTER_BUTTON)
 
     def click_filter_button(self):
         self.click(self.locators.FILTER_BUTTON)

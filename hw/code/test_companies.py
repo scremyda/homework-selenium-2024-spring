@@ -5,19 +5,19 @@ from base import BaseCase
 
 
 class TestCompanies(BaseCase):
-
+    
     def test_campaigns_search_min_length(self, companies_page):
 
         assert companies_page.is_visible_enter_search_query()
         companies_page.enter_search_query("no")
         assert companies_page.is_visible_warning_min_length()
-
+    
     def test_campaigns_search_save_button(self, companies_page):
         
         assert companies_page.is_visible_enter_search_query()
         companies_page.enter_search_query("query")
         assert companies_page.is_visible_filter_save_button()
-
+    
     def test_campaigns_search_save_filter_error(self, companies_page):
 
         assert companies_page.is_visible_enter_search_query()
@@ -27,7 +27,7 @@ class TestCompanies(BaseCase):
         assert companies_page.is_visible_filter_save_modal_button()
         companies_page.click_filter_save_modal_button()
         assert companies_page.get_filter_form_error() == "Введите название фильтра"
-
+    
     def test_campaigns_search_save_filter(self, companies_page):
         
         assert companies_page.is_visible_enter_search_query()

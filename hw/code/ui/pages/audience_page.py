@@ -33,11 +33,17 @@ class AudiencePage(BasePage):
         elem.send_keys(audience_title)
         elem.send_keys(Keys.ENTER)
 
+    def is_visible_form_error(self) -> bool:
+        return self.became_visible((self.locators.FORM_ERROR))
+
     def get_form_error(self) -> str:
         return self.find(self.locators.FORM_ERROR).text
 
     def open_user_list_tab(self):
         self.click(self.locators.USER_LIST_TAB)
+
+    def is_visible_create_user_list_button(self) -> bool:
+        return self.is_enabled(self.locators.CREATE_USER_LIST_BUTTON)
 
     def click_create_user_list_button(self):
         self.click(self.locators.CREATE_USER_LIST_BUTTON)

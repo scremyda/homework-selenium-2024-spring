@@ -130,7 +130,7 @@ class CompaniesPageLocators:
 
     FILTER_BUTTON = (
         By.XPATH,
-        "//span[text()='Фильтр']"
+        "//span[text()='Фильтр' and @class='vkuiButton__content']"
     )
 
     SAVED_FILTER_BUTTON = (
