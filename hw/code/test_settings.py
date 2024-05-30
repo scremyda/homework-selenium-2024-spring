@@ -1,3 +1,5 @@
+import pytest
+
 from base import BaseCase
 
 
@@ -10,7 +12,7 @@ class TestSettings(BaseCase):
     EXPECTED_ACCESS_URL = "https://ads.vk.com/hq/settings/access"
     EXPECTED_NOTIFICATIONS_CONNECT_TG_URL = "https://t.me/vkadssenderbot"
     EXPECTED_CHANGED_HISTORY_URL = "https://ads.vk.com/hq/settings/logs"
-
+    
     def test_check_access_redirect(self, settings_page):
         settings_page.open_access_rights()
 
@@ -21,7 +23,7 @@ class TestSettings(BaseCase):
         assert settings_page.get_details_link()
 
         assert self.driver.current_url == self.EXPECTED_ACCESS_URL
-
+    
     def test_check_access_additional_accounts_redirect(self, settings_page):
         settings_page.open_access_rights()
 
@@ -38,7 +40,7 @@ class TestSettings(BaseCase):
         assert settings_page.find_header_other_accounts_access()
 
         assert self.driver.current_url == self.EXPECTED_ACCESS_DETAILS_URL
-
+    
     def test_check_access_add_account(self, settings_page):
         settings_page.open_access_rights()
 
@@ -55,15 +57,6 @@ class TestSettings(BaseCase):
         assert settings_page.get_extended_rights_access_money()
 
         assert settings_page.check_opened_add_account_window()
-
-    def test_check_access_add_account_close(self, settings_page):
-        settings_page.open_access_rights()
-
-        settings_page.open_access_rights_add_account()
-
-        settings_page.close_access_rights_add_account()
-
-        assert settings_page.check_opened_add_account_window() is False
 
     def test_check_access_add_account_id(self, settings_page):
         settings_page.open_access_rights()

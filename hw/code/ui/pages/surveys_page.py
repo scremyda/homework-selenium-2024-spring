@@ -11,7 +11,13 @@ class SurveysPage(BasePage):
         self.click(self.locators.OPEN_SURVEYS)
 
     def create_survey(self):
-        self.click(self.locators.CREATE_SURVEY,5)
+        self.click(self.locators.CREATE_SURVEY, 5)
+
+    def is_visible_create_survey(self) -> bool:
+        return self.became_visible(self.locators.CREATE_SURVEY)
+    
+    def is_enabled_create_survey(self) -> bool:
+        return self.is_enabled(self.locators.CREATE_SURVEY)
 
     def open_survey_questions(self):
         self.click(self.locators.CREATE_SURVEYS_QUESTIONS)
@@ -65,10 +71,10 @@ class SurveysPage(BasePage):
         self.click(self.locators.DARK_THEME_SURVEY)
 
     def get_dark_theme_survey(self):
-        return  self.find(self.locators.FORM_DARK_THEME_SURVEY)
+        return self.find(self.locators.FORM_DARK_THEME_SURVEY)
 
     def get_white_theme_survey(self):
-        return  self.find(self.locators.FORM_WHITE_THEME_SURVEY)
+        return self.find(self.locators.FORM_WHITE_THEME_SURVEY)
 
     def write_name_survey_input(self, input_vk_id):
         input_vk_id.send_keys(self.locators.INPUT_TEST_LOGIC)

@@ -9,7 +9,7 @@ class SurveysPageLocators:
     )
 
     CREATE_SURVEY = (
-        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Создать опрос']"
+        By.XPATH, "//span[text()='Создать опрос' and contains(@class, 'vkuiButton__content')]"
     )
 
     CREATE_SURVEYS_QUESTIONS = (
