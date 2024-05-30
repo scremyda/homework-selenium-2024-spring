@@ -7,5 +7,5 @@ class AudiencePage(BasePage):
     url = 'https://ads.vk.com/hq/audience'
     locators = AudiencePageLocators()
 
-    def test_check_access_redirect(self):
-        print("unimplemented")
+    def is_visible_empty_message(self) -> bool:
+        return self.became_visible(self.locators.EMPTY_MASSAGE)

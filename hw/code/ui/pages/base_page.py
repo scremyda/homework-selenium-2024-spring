@@ -31,8 +31,6 @@ class BasePage(object):
         self.driver = driver
         self.is_opened()
 
-        self.close_cookie_banner()
-
     def wait(self, timeout: float | None = 10):
         return WebDriverWait(self.driver, timeout=timeout)
 

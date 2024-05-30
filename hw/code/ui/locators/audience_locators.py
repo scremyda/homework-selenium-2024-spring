@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 class AudiencePageLocators:
 
-    SAVE_DRAFT_STATUS = (
+    EMPTY_MASSAGE = (
         By.XPATH,
-        "//*[contains(@class, 'CreateFooter_draftStatus') and text()='Изменения сохранены']"
+        "//h2[text()='Аудиторий пока нет']"
     )
