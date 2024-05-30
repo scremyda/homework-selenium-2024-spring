@@ -104,3 +104,15 @@ class SurveysPageLocators:
     FORM_DARK_THEME_SURVEY = (
         By.XPATH, "//*[contains(@class, 'LeadForm-module')]"
     )
+
+    CHOOSE_BACK_BTN = (
+        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Назад']"
+    )
+
+    CHOOSE_RESULT_BTN = (
+        By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Результат']"
+    )
+
+    GET_ALERT_EMPTY_INPUT = (
+        By.XPATH, "//*[text()='Вопрос должен быть не пустым и содержать минимум 2 ответа']"
+    )

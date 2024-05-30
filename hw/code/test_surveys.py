@@ -101,3 +101,70 @@ class TestSurveys(BaseCase):
 
         assert serveys_page.get_emergency_brake()
 
+
+    def test_choose_question_survey_redirect_back(self, serveys_page):
+        serveys_page.open_lead_form_page()
+        serveys_page.open_surveys_page()
+
+        serveys_page.create_survey()
+
+        assert serveys_page.get_name_survey_input()
+        assert serveys_page.get_company_name_survey_input()
+        assert serveys_page.get_header_survey_input()
+        assert serveys_page.get_description_survey_input()
+        assert serveys_page.get_upload_survey_input()
+
+        serveys_page.write_name_survey_input(serveys_page.get_name_survey_input())
+
+        serveys_page.write_company_name_survey_input(serveys_page.get_company_name_survey_input())
+
+        serveys_page.write_header_survey_input(serveys_page.get_header_survey_input())
+
+        serveys_page.write_description_survey_input(serveys_page.get_description_survey_input())
+
+        serveys_page.open_upload_image()
+
+        serveys_page.choose_upload_image()
+
+        serveys_page.choose_questions()
+
+        serveys_page.choose_back_btn()
+
+        assert serveys_page.get_name_survey_input()
+        assert serveys_page.get_company_name_survey_input()
+        assert serveys_page.get_header_survey_input()
+        assert serveys_page.get_description_survey_input()
+
+
+    def test_alert_empty_questions(self, serveys_page):
+        serveys_page.open_lead_form_page()
+        serveys_page.open_surveys_page()
+
+        serveys_page.create_survey()
+
+        assert serveys_page.get_name_survey_input()
+        assert serveys_page.get_company_name_survey_input()
+        assert serveys_page.get_header_survey_input()
+        assert serveys_page.get_description_survey_input()
+        assert serveys_page.get_upload_survey_input()
+
+        serveys_page.write_name_survey_input(serveys_page.get_name_survey_input())
+
+        serveys_page.write_company_name_survey_input(serveys_page.get_company_name_survey_input())
+
+        serveys_page.write_header_survey_input(serveys_page.get_header_survey_input())
+
+        serveys_page.write_description_survey_input(serveys_page.get_description_survey_input())
+
+        serveys_page.open_upload_image()
+
+        serveys_page.choose_upload_image()
+
+        serveys_page.choose_questions()
+
+        serveys_page.choose_result_btn()
+
+        assert serveys_page.get_alert_empty_input()
+
+
+

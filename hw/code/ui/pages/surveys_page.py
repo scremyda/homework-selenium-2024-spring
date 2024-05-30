@@ -100,4 +100,12 @@ class SurveysPage(BasePage):
 
     def get_questions(self):
         return self.find(self.locators.CHOOSE_QUESTIONS)
+    def choose_back_btn(self):
+        self.click(self.locators.CHOOSE_BACK_BTN)
+
+    def choose_result_btn(self):
+        self.click(self.locators.CHOOSE_RESULT_BTN)
+
+    def get_alert_empty_input(self):
+        return self.find(self.locators.GET_ALERT_EMPTY_INPUT)
 
